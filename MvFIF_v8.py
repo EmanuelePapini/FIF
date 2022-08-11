@@ -12,8 +12,6 @@ import numpy as np
 from numpy import linalg as LA
 from scipy.io import loadmat
 from scipy.signal import argrelextrema 
-import time
-import timeit
 from numba import jit,njit
 
 __version__='8.0'

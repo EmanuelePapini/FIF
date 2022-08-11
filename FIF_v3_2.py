@@ -13,9 +13,6 @@ from numpy import linalg as LA
 from scipy.io import loadmat
 from scipy.signal import argrelextrema 
 from numpy import fft
-import time
-#import pandas as pd
-import timeit
 from numba import jit
 
 __version__='3.2'
