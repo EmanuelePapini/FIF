@@ -61,7 +61,7 @@ class FIF():
         plt.ion()
         plt.figure()
         plt.plot(x,y,label='signal')
-        [plt.plot(x,fif.IMF[i,:],label = 'IMF#'+i.str()) for i in range(a.IMF.shape[0])]
+        [plt.plot(x,fif.data['IMC'][i,:],label = 'IMC#'+str(i)) for i in range(fif.data['IMC'].shape[0])]
         plt.legend(loc='best')
 
     Eventual custom settings (e.g. Xi, delta and so on) must be specified at the time of initialization
