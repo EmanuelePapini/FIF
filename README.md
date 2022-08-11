@@ -17,20 +17,24 @@ If you have a PYTHONPATH already set, you can put the FIF folder directly there 
 example: assuming FIF is located in the PYTHONPATH or in the local path from where python3 is been executed 
 
 ```
+#create the signal to be analyzed
 import numpy as np
 x = np.linspace(0,2*np.pi,100,endpoint=False)
 y = np.sin(2*x) + np.cos(10*x+2.3)
-
+        
 #do the FIF analysis
 import FIF
+    
 fif=FIF.FIF()
 fif.run(y)
+#plot the results
 import pylab as plt
 plt.ion()
 plt.figure()
 plt.plot(x,y,label='signal')
-[plt.plot(x,fif.IMF[i,:],label = 'IMF#'+i.str()) for i in range(a.IMF.shape[0])]
+[plt.plot(x,fif.data['IMC'][i,:],label = 'IMC#'+str(i)) for i in range(fif.data['IMC'].shape[0])]
 plt.legend(loc='best')
+
 ```
 
 
