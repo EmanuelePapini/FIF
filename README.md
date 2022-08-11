@@ -1,4 +1,4 @@
-# FAST ITERATIVE FILTERING#
+# FAST ITERATIVE FILTERING
 
 This repository contains the python package for the Fast Iterative Filtering (FIF) and the Multivariate Fast Iterative Filtering (MvFIF) algorithm.
 
@@ -17,32 +17,27 @@ If you have a PYTHONPATH already set, you can put the FIF folder directly there 
 example: assuming FIF is located in the PYTHONPATH or in the local path from where python3 is been executed 
 
 ```
->>>import numpy as np
->>>x = np.linspace(0,2*np.pi,100,endpoint=False)
->>>y = np.sin(2*x) + np.cos(10*x+2.3)
->>>
->>>#do the FIF analysis
->>>import FIF
->>>
->>>fif=FIF.FIF()
->>>
->>>fif.run(y)
->>>
->>>#plot the results
->>>import pylab as plt
->>>plt.ion()
->>>plt.figure()
->>>plt.plot(x,y,label='signal')
->>>[plt.plot(x,fif.IMF[i,:],label = 'IMF#'+i.str()) for i in range(a.IMF.shape[0])]
->>>plt.legend(loc='best')
+import numpy as np
+x = np.linspace(0,2*np.pi,100,endpoint=False)
+y = np.sin(2*x) + np.cos(10*x+2.3)
+
+#do the FIF analysis
+import FIF
+fif=FIF.FIF()
+fif.run(y)
+import pylab as plt
+plt.ion()
+plt.figure()
+plt.plot(x,y,label='signal')
+[plt.plot(x,fif.IMF[i,:],label = 'IMF#'+i.str()) for i in range(a.IMF.shape[0])]
+plt.legend(loc='best')
 ```
 
 
 ### Links ###
-    http://people.disim.univaq.it/~antonio.cicone/Software.html
+ http://people.disim.univaq.it/~antonio.cicone/Software.html
 
 ### References ###
-    
-    [1] A. Cicone, H. Zhou. [Numerical Analysis for Iterative Filtering with New Efficient Implementations Based on FFT.](https://arxiv.org/abs/1802.01359) Numerische Mathematik, 147 (1), pages 1-28, 2021. doi: 10.1007/s00211-020-01165-5
-    [2] A. Cicone and E. Pellegrino. Multivariate Fast Iterative Filtering for the decomposition of nonstationary signals. IEEE Transactions on Signal Processing, Volume 70, pages 1521-1531, 2022. doi: 10.1109/TSP.2022.3157482
+1) A. Cicone, H. Zhou. [Numerical Analysis for Iterative Filtering with New Efficient Implementations Based on FFT.](https://arxiv.org/abs/1802.01359) Numerische Mathematik, 147 (1), pages 1-28, 2021. doi: 10.1007/s00211-020-01165-5
+2) A. Cicone and E. Pellegrino. [Multivariate Fast Iterative Filtering for the decomposition of nonstationary signals.](https://arxiv.org/abs/1902.04860) IEEE Transactions on Signal Processing, Volume 70, pages 1521-1531, 2022. doi: 10.1109/TSP.2022.3157482
 
