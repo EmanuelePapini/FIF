@@ -40,7 +40,7 @@ plt.legend(loc='best')
 
 The python version of the FIF and the MvFIF algorithm have been written by Emanuele Papini - INAF (emanuele.papini@inaf.it).
 
-The original code and algorithm conceptualization are authored by Antonio Cicone - university of L'Aquila (antonio.cicone@univaq.it).
+The original code and algorithm conceptualization are authored by Antonio Cicone - University of L'Aquila (antonio.cicone@univaq.it).
 
 Please feel free to contact us would you need any help in getting FIF up and running.
 
