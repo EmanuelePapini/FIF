@@ -331,7 +331,7 @@ def Maxmins_v3_4(x,mode='wrap'):
                         Mins[cmins] = (posc + (c-1)//2 +1)%N_old
                     c = 0
 
-            if df[i]*df[+1] < -tol:
+            if df[i]*df[i+1] < -tol:
                 if df[i] < -tol and df[i+1] > tol:
                     cmins  =cmins+1
                     Mins[cmins] = (i+1)%N_old
