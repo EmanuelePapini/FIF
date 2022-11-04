@@ -4,6 +4,8 @@ This repository contains the python package for the Fast Iterative Filtering (FI
 
 FIF is an adaptive method for decomposing a 1D signal into a set of Intrinsic Mode Components (IMC) plus a trend. These components are simple oscillating functions whose average frequency is well behaved and form a complete and nearly orthogonal basis of the original signal.
 
+In the package, IMFogram_v1.py contains the methods to calculate the IMFogram (see https://ui.adsabs.harvard.edu/abs/2020arXiv201114209B/abstract)
+
 ### Dependencies ###
 The package has been written and tested in python3.
 
@@ -36,6 +38,19 @@ plt.plot(x,y,label='signal')
 plt.legend(loc='best')
 
 ```
+
+### IMPORTANT REMARKS ###
+
+Currently, there are different versions of FIF available (2.13 and 3.2). The system automatically uses version 2.13, which is more recent than v3.2. As such, v3.2 is considered deprecated and should not be used. However, it is possible to select that version by doing the following:
+
+```
+FIFversion = '3.2'
+import FIF
+```
+
+A message specifying which version of FIF has been loaded will be always displayed.
+
+
 ### Contacts ###
 
 The python version of the FIF and the MvFIF algorithm have been written by Emanuele Papini - INAF (emanuele.papini@inaf.it).

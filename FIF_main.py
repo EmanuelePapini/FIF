@@ -7,8 +7,20 @@
     Python version: Emanuele Papini - INAF (emanuele.papini@inaf.it) 
     Original matlab version: Antonio Cicone - university of L'Aquila (antonio.cicone@univaq.it)
 """
-#change if you want to use a different version
-from . import FIF_v3_2 as FIFpy
+
+import __main__
+if hasattr(__main__,"FIFversion"):
+    FIFversion = __main__.FIFversion
+    if FIFversion == '2.13':
+        from . import FIF_v2_13 as FIFpy
+    elif FIFversion == '3.2':
+        from . import FIF_v3_2 as FIFpy
+    else:
+        raise Exception('Wrong FIFversion selected!. Available methods are ',meths)
+else:
+    from . import FIF_v2_13 as FIFpy
+
+print('Loading FIF version: '+FIFpy.__version__)
 
 #change if you want to use a different version
 from . import MvFIF_v8 as MvFIFpy
@@ -118,15 +130,16 @@ class FIF():
 
 
         self.__version__=FIFpy.__version__
-
         self.options={'delta' : delta, 'alpha' : alpha, 'verbose' : verbose, \
                       'NumSteps' : NumSteps, 'ExtPoints' : ExtPoints, 'NIMFs' : NIMFs, \
                       'MaxInner' : MaxInner, 'MonotoneMaskLength' : MonotoneMaskLength,\
                       'Xi' : Xi}
 
+        if self.__version__ == '2.13':
+            self.options = FIFpy.Settings(**self.options)
+
         self.FIFpy = FIFpy
    
-        #contains ancillary data which keep trace of the processing done on the data
         self.ancillary = {}
     
     def run(self, in_f, M=np.array([]), wshrink = 0,**kwargs):
@@ -136,10 +149,15 @@ class FIF():
         self.data['IMC'], self.data['stats_list'] = self.FIFpy.FIF_run(in_f, M = M, options = self.options,window_file=window_file,**kwargs)
 
         self.ancillary['wshrink'] = wshrink
+        
+        self.wsh = wshrink
 
     @property
     def input_timeseries(self):
         return np.sum(self.data['IMC'],axis=0)
+    @property
+    def IMC(self):
+        return self.data['IMC'][:,self.wsh:-self.wsh] if self.wsh >0 else self.data['IMC'] 
 
     def get_inst_freq_amp(self,dt, as_output = False ):
         """
