@@ -41,7 +41,7 @@ plt.legend(loc='best')
 
 ### IMPORTANT REMARKS ###
 
-Currently, there are different versions of FIF available (2.13 and 3.2). The system automatically uses version 2.13, which is more recent than v3.2. As such, v3.2 is considered deprecated and should not be used. However, it is possible to select that version by doing the following:
+Currently, there are different versions of FIF available (2.13 and 3.2). The system automatically uses version 2.13, which is more recent than v3.2. As such, v3.2 is considered deprecated and should not be used. However, it is possible to select that version by doing the following prior importing FIF:
 
 ```
 FIFversion = '3.2'
