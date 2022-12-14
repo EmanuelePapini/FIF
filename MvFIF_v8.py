@@ -167,7 +167,7 @@ def MvFIF(x, delta, alpha, NumSteps, ExtPoints, NIMFs, MaxInner, Xi=1.6, M=np.ar
         print('Signal too small')
         return None, None
 
-    maxmins_pp = Maxmins_v3_8(f_pp,mode='wrap')[0] 
+    maxmins_pp = Maxmins_v3_8(f_pp,tol,mode='wrap')[0]
     if np.size(maxmins_pp) < 1:
         print('Signal too small')
         return None, None
