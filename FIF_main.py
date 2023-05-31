@@ -36,7 +36,7 @@ from copy import copy
 __version__ = ('FIF:'+FIFpy.__version__,'MvFIF:'+MvFIFpy.__version__)
 
 _path_=sys.modules[__name__].__file__[0:-11]
-window_file = _path_+'prefixed_double_filter.mat'
+_window_file = _path_+'prefixed_double_filter.mat'
 
 #WRAPPER 
 def FIF_run(*args,**kwargs):
@@ -142,11 +142,11 @@ class FIF():
    
         self.ancillary = {}
     
-    def run(self, in_f, M=np.array([]), wshrink = 0,**kwargs):
+    def run(self, in_f, M=np.array([]), wshrink = 0, window_file = _window_file, **kwargs):
 
         self.data = {}
         
-        self.data['IMC'], self.data['stats_list'] = self.FIFpy.FIF_run(in_f, M = M, options = self.options,window_file=window_file,**kwargs)
+        self.data['IMC'], self.data['stats_list'] = self.FIFpy.FIF_run(in_f, M = M, options = self.options, window_file = window_file, **kwargs)
 
         self.ancillary['wshrink'] = wshrink
         
