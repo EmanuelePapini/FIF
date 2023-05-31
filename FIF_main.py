@@ -125,8 +125,7 @@ class FIF():
 
 
     def __init__(self, delta=0.001, alpha=30, NumSteps=1, ExtPoints=3, NIMFs=200, \
-                       MaxInner=200, Xi=1.6, MonotoneMaskLength=True, verbose = False):
-
+                       MaxInner=200, Xi=1.6, MonotoneMaskLength=True, verbose = False, window_file = None):
 
 
         self.__version__=FIFpy.__version__
@@ -141,12 +140,13 @@ class FIF():
         self.FIFpy = FIFpy
    
         self.ancillary = {}
+        self.window_file = _window_file if window_file is None else window_file
     
-    def run(self, in_f, M=np.array([]), wshrink = 0, window_file = _window_file, **kwargs):
+    def run(self, in_f, M=np.array([]), wshrink = 0, **kwargs):
 
         self.data = {}
         
-        self.data['IMC'], self.data['stats_list'] = self.FIFpy.FIF_run(in_f, M = M, options = self.options, window_file = window_file, **kwargs)
+        self.data['IMC'], self.data['stats_list'] = self.FIFpy.FIF_run(in_f, M = M, options = self.options, window_file = self.window_file, **kwargs)
 
         self.ancillary['wshrink'] = wshrink
         
