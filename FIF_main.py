@@ -216,7 +216,7 @@ class MvFIF(FIF):
     """
 
     def __init__(self, delta=0.001, alpha=30, NumSteps=1, ExtPoints=3, NIMFs=200, \
-                       MaxInner=200, Xi=1.6, MonotoneMaskLength=True, verbose = False):
+                       MaxInner=200, Xi=1.6, MonotoneMaskLength=True, verbose = False, window_file = None):
 
 
         self.__version__=FIFpy.__version__
@@ -230,6 +230,7 @@ class MvFIF(FIF):
    
         #contains ancillary data which keep trace of the processing done on the data
         self.ancillary = {}
+        self.window_file = _window_file if window_file is None else window_file
 
 
     def get_inst_freq_amp(self,dt, as_output = False ):
